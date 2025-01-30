@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-function Footer() {
+export default function Footer() {
     return (
         <footer className="bg-white border-y">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -159,5 +160,3 @@ function Footer() {
         </footer>
     );
 }
-
-export default Footer
