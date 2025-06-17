@@ -1,7 +1,7 @@
 import React from "react";
 import UserContext from "./UserContext";
 
-const UserContextProvider = ({children}) => {
+const UserContextProvider = ({children}) => {  // childer is generic term can be used as whatever data is came as it pass on to it.like div, card
     const [user, setUser] = React.useState(null)
     return (
         <>
