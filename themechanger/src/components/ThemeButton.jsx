@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useTheme from "../context/Theme";
 
 export default function ThemeButton() {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
@@ -13,8 +14,20 @@ export default function ThemeButton() {
   }, [theme]);
 
   const onChangeBtn = (e) => {
+
     setTheme(e.target.checked ? "dark" : "light");
   };
+
+  // const { themeMode, lightTheme, darkTheme } = useTheme();
+
+  // const onChangeBtn = (e) => {
+  //   const darkModeStatus = e.currenttarget.checked;
+  //   if (darkModeStatus) {
+  //     darkTheme();
+  //   } else {
+  //     lightTheme();
+  //   }
+  // };
 
   return (
     <label className="relative inline-flex items-center cursor-pointer">
