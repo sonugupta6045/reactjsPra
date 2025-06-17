@@ -22,10 +22,10 @@ function App() {
   return (
     <>
     <div className="conter">
-      <h1>SOnu Gupta</h1>
-      <h1>Display the Number</h1>
-      <button onClick={addValue}>AddValue {count}</button>
-      <button onClick={removeValue}>RemoveValue {count}</button>
+      <h1>Sonu Gupta</h1>
+      <h1>Display the Number:{count}</h1>
+      <button onClick={addValue}>AddValue </button>
+      <button onClick={removeValue}>RemoveValue</button>
     </div>
      <h1 className="bg-green-400">Tailwind Css</h1>
      <Card username ="Sonu Gupta"/>

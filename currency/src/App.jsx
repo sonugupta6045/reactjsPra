@@ -10,8 +10,7 @@ function App() {
   const [convertedAmount, setConvertedAmount] = useState(0);
 
   const fromCurrency = useCurrencyInfo(from);
-
-  const options = Object.keys(fromCurrency);
+  const options = Object.keys(fromCurrency || {}); // prevent crash on initial load
 
   const swap = () => {
     const temp = from;
@@ -22,7 +21,9 @@ function App() {
   };
 
   const convert = () => {
-    setConvertedAmount(amount * fromCurrency[to]);
+  
+      setConvertedAmount(amount * fromCurrency[from]);
+    
   };
 
   return (
@@ -30,11 +31,11 @@ function App() {
       <div
         className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
         style={{
-            backgroundImage: `url('https://images.pexels.com/photos/1235971/pexels-photo-1235971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
+          backgroundImage: `url('https://images.pexels.com/photos/1235971/pexels-photo-1235971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
         }}
       >
         <div className="w-full">
-          <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+          <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/100">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -46,10 +47,12 @@ function App() {
                   label="From"
                   amount={amount}
                   currencyOptions={options}
-                  onCurrencyChange={(currency) => setAmount(currency)}
+                  onCurrencyChange={(currency) => setFrom(currency)}
                   selectCurrency={from}
+                  onAmountChange={(amount) => setAmount(amount)}
                 />
               </div>
+
               <div className="relative w-full h-0.5">
                 <button
                   type="button"
@@ -59,17 +62,18 @@ function App() {
                   swap
                 </button>
               </div>
+
               <div className="w-full mt-1 mb-4">
                 <Input
                   label="To"
                   amount={convertedAmount}
                   currencyOptions={options}
-                  onAmountChange={(currency) => setAmount(currency)}
                   onCurrencyChange={(currency) => setTo(currency)}
-                  selectCurrency={from}
+                  selectCurrency={to}
                   amountDisabled
                 />
               </div>
+
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
