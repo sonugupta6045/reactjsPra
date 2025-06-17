@@ -24,3 +24,18 @@ const MyProvider = ({ children }) => {
 };
 # Context API and Redux and Zustand
 
+```
+const updateTodo = (id,todo) => {
+  setTodos((prev)=>prev.map((prevTodo)=>{prevTodo,id === id ? todo : prevTodo})); // Update the todo with the given id
+}
+'''
+# Local Storage of the browser
+Local Storage is a web storage mechanism that allows developers to store key-value pairs in a web browser. It is part of the Web Storage API and provides a way to persist data across browser sessions. Local Storage is synchronous and has a larger storage capacity compared to cookies.
+# How to use Local Storage  
+1. Use `localStorage.setItem(key, value)` to store data.
+`when we are storing data, it will be stored as a string, so we need to convert it to a string if we are storing objects or arrays.`
+2. Use `localStorage.getItem(key)` to retrieve data.
+`when we are retrieving data, it will return a string, so we need to parse it if we are storing objects or arrays.`
+3. Use `localStorage.removeItem(key)` to remove data. 
+4. Use `localStorage.clear()` to clear all data.
+
